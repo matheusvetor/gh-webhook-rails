@@ -1,7 +1,11 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: %i[show]
 
-  def index; end
+  def index
+    @issues = Issue.where(repository_id: params[:repository_id])
+
+    render json: @issues
+  end
 
   def show
     render json: @issue
