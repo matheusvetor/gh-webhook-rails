@@ -8,6 +8,7 @@ pipelines:
         script:
           - curl -sL https://deb.nodesource.com/setup_10.x | bash -
           - apt-get install -y nodejs
+          - apt-get install -y postgresql-client
           - export DATABASE_URL=postgresql://test_user:test_user_password@localhost/pipelines
           - bundle install --path vendor/bundle
           - bundle exec rails db:setup
