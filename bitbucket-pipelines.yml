@@ -12,6 +12,8 @@ pipelines:
           - rails db:test:prepare
           - bundle install
           - bundle exec rake
+        services:
+          - postgres
 
 definitions:
   caches:
