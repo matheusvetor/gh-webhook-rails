@@ -6,6 +6,8 @@ pipelines:
         caches:
           - bundler
         script:
+          - export DATABASE_URL=postgresql://test_user:test_user_password@localhost/pipelines
+          - mv -f config/database_bitbucket.yml config/database.yml
           - curl -sL https://deb.nodesource.com/setup_10.x | bash -
           - apt-get install -y nodejs
           - apt-get install -y postgresql-client
@@ -25,5 +27,9 @@ definitions:
   services:
     postgres:
       image: postgres
+      environment:
+        POSTGRES_DB: pipelines
+        POSTGRES_USER: test_user
+        POSTGRES_PASSWORD: test_user_password
     redis:
       image: redis
