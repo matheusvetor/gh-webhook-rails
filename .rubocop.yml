@@ -8,7 +8,7 @@ AllCops:
     - 'vendor/**/*'
     - 'app/inputs/**/*'
 
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.4
 
   # Enabled by default
   DisabledByDefault: false
