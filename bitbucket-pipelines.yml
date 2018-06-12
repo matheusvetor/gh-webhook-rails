@@ -1,5 +1,4 @@
 image: ruby:2.5.1
-image: node:6.9.4
 
 pipelines:
   default:
@@ -7,6 +6,8 @@ pipelines:
         caches:
           - bundler
         script:
+          - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+          - apt-get install -y nodejs
           - export DATABASE_URL=postgresql://test_user:test_user_password@localhost/pipelines
           - bundle install --path vendor/bundle
           - bundle exec rails db:setup
