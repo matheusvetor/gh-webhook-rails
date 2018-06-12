@@ -8,8 +8,8 @@ pipelines:
         script:
           - export DATABASE_URL=postgresql://test_user:test_user_password@localhost/pipelines
           - bundle install --path vendor/bundle
-          - rails db:setup
-          - rails db:test:prepare
+          - bundle exec rails db:setup
+          - bundle exec rails db:test:prepare
           - bundle install
           - bundle exec rake
         services:
