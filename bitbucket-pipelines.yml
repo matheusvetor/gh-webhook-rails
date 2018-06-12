@@ -6,6 +6,7 @@ pipelines:
         caches:
           - bundler
         script:
+          - export RAILS_ENV=test
           - export DATABASE_URL=postgresql://test_user:test_user_password@localhost/pipelines
           - mv -f config/database_bitbucket.yml config/database.yml
           - curl -sL https://deb.nodesource.com/setup_10.x | bash -
