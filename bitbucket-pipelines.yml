@@ -16,6 +16,7 @@ pipelines:
           - bundle exec rake
         services:
           - postgres
+          - redis
 
 definitions:
   caches:
@@ -28,3 +29,5 @@ definitions:
         POSTGRES_DB: pipelines
         POSTGRES_USER: test_user
         POSTGRES_PASSWORD: test_user_password
+    redis:
+      image: redis
