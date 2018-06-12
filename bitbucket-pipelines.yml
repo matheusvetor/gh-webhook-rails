@@ -6,7 +6,7 @@ pipelines:
         caches:
           - bundler
         script:
-          - bundle install
+          - bundle exec rake
 
 definitions:
   caches:
