@@ -9,7 +9,7 @@ pipelines:
           - curl -sL https://deb.nodesource.com/setup_10.x | bash -
           - apt-get install -y nodejs
           - apt-get install -y postgresql-client
-          - export DATABASE_URL=postgresql://test_user:test_user_password@localhost/pipelines
+          - export DATABASE_URL=postgresql://test_user:test_user_password@localhost/zaitt-ror-test_test
           - bundle install --path vendor/bundle
           - bundle exec rails db:setup
           - bundle exec rails db:test:prepare
@@ -27,7 +27,7 @@ definitions:
     postgres:
       image: postgres
       environment:
-        POSTGRES_DB: 'pipelines'
+        POSTGRES_DB: 'zaitt-ror-test_test'
         POSTGRES_USER: 'test_user'
         POSTGRES_PASSWORD: 'test_user_password'
     redis:
