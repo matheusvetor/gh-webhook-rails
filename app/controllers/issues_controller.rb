@@ -1,5 +1,5 @@
 class IssuesController < ApplicationController
-  before_action :set_issue, only: %i(show)
+  before_action :set_issue, only: %i[show]
 
   def index; end
 
