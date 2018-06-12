@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2018_06_12_211830) do
 
   create_table "issues", force: :cascade do |t|
     t.integer "action", default: 0, null: false
-    t.integer "repository_id", default: 0, null: false
+    t.integer "repository_id", null: false
     t.string "repository_name", default: "", null: false
     t.string "owner_name", default: "", null: false
     t.datetime "created_at", null: false

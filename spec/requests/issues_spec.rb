@@ -56,7 +56,7 @@ RSpec.describe 'Issue Resource', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to eq("[\"Repository name can't be blank\",\"Owner name can't be blank\"]")
+          .to eq("[\"Repository can't be blank\",\"Repository name can't be blank\",\"Owner name can't be blank\"]")
       end
     end
   end
