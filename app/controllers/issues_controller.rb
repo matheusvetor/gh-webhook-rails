@@ -12,7 +12,9 @@ class IssuesController < ApplicationController
   end
 
   def create
-    @issue = Issue.new(issue_attributes)
+    render(json: {}, status: :ok) if request.headers['X-GitHub-Event'].eql?('ping')
+
+    @issue = Issue.new(normalized_issue_attributes)
 
     if @issue.save
       render json: @issue, status: :created
@@ -29,8 +31,12 @@ class IssuesController < ApplicationController
     render json: I18n.t('record_not_found'), status: :not_found
   end
 
-  def issue_attributes
-    logger.info(params)
-    params.require(:issue).permit(%i[repository_id repository_name action owner_name])
+  def normalized_issue_attributes
+    params.permit!
+    attributes  = {
+      repository_id: params[:repository][:id],
+      repository_name: params[:repository][:full_name],
+      owner_name: params[:repository][:owner][:login]
+    }
   end
 end
