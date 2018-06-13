@@ -8,4 +8,12 @@ class Issue < ApplicationRecord
   validates :action, :repository, presence: true
 
   delegate :name, to: :repository, prefix: true
+  delegate :owner_name, to: :repository
+
+  def as_json(options = nil)
+    super({
+      only: %w[id action repository_id created_at updated_at],
+      methods: %w[repository_name owner_name]
+    }.merge(options || {}))
+  end
 end
