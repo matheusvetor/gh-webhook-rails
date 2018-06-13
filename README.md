@@ -5,6 +5,8 @@ Este projeto está hospedado no [Heroku](https://zaitt-ror-test.herokuapp.com)
 
 Esta aplicação provê uma api para receber issues de repositório do Github através de um webhook.
 
+Issues devem ser criadas [neste repositório](https://github.com/matheusvetor/webhook-test)
+
 ## Dependências
 
 * ruby 2.4
