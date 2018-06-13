@@ -12,7 +12,7 @@ class IssuesController < ApplicationController
   end
 
   def create
-    render(json: {}, status: :ok) if request.headers['X-GitHub-Event'].eql?('ping')
+    return render(json: {}, status: :ok) if request.headers['X-GitHub-Event'].eql?('ping')
 
     @issue = Issue.new(normalized_issue_attributes)
 
