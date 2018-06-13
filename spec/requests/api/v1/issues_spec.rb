@@ -6,10 +6,10 @@ RSpec.describe 'Issue Resource', type: :request do
   let!(:issues)  { create_list(:issue, 10) }
   let(:issue_id) { issues.first.id }
 
-  describe 'GET /repositories/:repository_id/issues' do
+  describe 'GET /api/v1/repositories/:repository_id/issues' do
     let(:repository) { create(:repository) }
     before { create_list(:issue, 10, repository: repository)}
-    before { get "/repositories/#{repository.id}/issues" }
+    before { get "/api/v1/repositories/#{repository.id}/issues" }
 
     it "returns repository's issues" do
       expect(json).not_to be_empty
@@ -21,7 +21,7 @@ RSpec.describe 'Issue Resource', type: :request do
     end
 
     describe 'with invalid repository id' do
-      before { get "/repositories/10000/issues" }
+      before { get '/api/v1/repositories/10000/issues' }
 
       it 'returns authors' do
         expect(json).to be_empty
@@ -29,8 +29,8 @@ RSpec.describe 'Issue Resource', type: :request do
     end
   end
 
-  describe 'GET /issues/:id' do
-    before { get "/issues/#{issue_id}" }
+  describe 'GET /api/v1/issues/:id' do
+    before { get "/api/v1/issues/#{issue_id}" }
 
     context 'when the record exists' do
       it 'returns the issue' do
@@ -56,7 +56,7 @@ RSpec.describe 'Issue Resource', type: :request do
     end
   end
 
-  describe 'POST /issues' do
+  describe 'POST /api/v1/issues' do
     context 'when the request is valid' do
       before do
         headers = {
@@ -66,7 +66,7 @@ RSpec.describe 'Issue Resource', type: :request do
 
         data = File.read(Rails.root.join('spec', 'fixtures', 'opened_issue.json'))
 
-        post '/issues', headers: headers, params: data
+        post '/api/v1/issues', headers: headers, params: data
       end
 
       it 'returns status code 201' do
