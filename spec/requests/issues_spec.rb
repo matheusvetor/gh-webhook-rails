@@ -7,9 +7,9 @@ RSpec.describe 'Issue Resource', type: :request do
   let(:issue_id) { issues.first.id }
 
   describe 'GET /repositories/:repository_id/issues' do
-    let(:repository_key) { { repository_id: 9999, repository_name: 'some_name'} }
-    before { create_list(:issue, 10, repository_key)}
-    before { get "/repositories/#{repository_key[:repository_id]}/issues" }
+    let(:repository) { create(:repository) }
+    before { create_list(:issue, 10, repository: repository)}
+    before { get "/repositories/#{repository.id}/issues" }
 
     it "returns repository's issues" do
       expect(json).not_to be_empty
@@ -57,30 +57,20 @@ RSpec.describe 'Issue Resource', type: :request do
   end
 
   describe 'POST /issues' do
-    let(:valid_attributes) { attributes_for(:issue) }
-
     context 'when the request is valid' do
-      before { post '/issues', params: { issue: valid_attributes } }
+      before do
+        headers = {
+          :'Content-Type'   => 'application/json',
+          :'X-GitHub-Event' => 'issues',
+        }
 
-      it 'creates a issue' do
-        expect(json['repository_name']).to eq(valid_attributes[:repository_name])
+        data = File.read(Rails.root.join('spec', 'fixtures', 'opened_issue.json'))
+
+        post '/issues', headers: headers, params: data
       end
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
-      end
-    end
-
-    context 'when the request is invalid' do
-      before { post '/issues', params: { issue: { repository_name: nil } } }
-
-      it 'returns status code 422' do
-        expect(response).to have_http_status(422)
-      end
-
-      it 'returns a validation failure message' do
-        expect(response.body)
-          .to eq("[\"Repository can't be blank\",\"Repository name can't be blank\",\"Owner name can't be blank\"]")
       end
     end
   end

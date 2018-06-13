@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 class Issue < ApplicationRecord
-  enum action: %i[open closed]
+  belongs_to :repository
 
-  validates :action, :repository_id, :repository_name, :owner_name, presence: true
+  validates :action, :repository, presence: true
+
+  delegate :name, to: :repository, prefix: true
 end

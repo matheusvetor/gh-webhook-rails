@@ -13,16 +13,23 @@
 ActiveRecord::Schema.define(version: 2018_06_12_211830) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
 
   create_table "issues", force: :cascade do |t|
-    t.integer "action", default: 0, null: false
-    t.integer "repository_id", null: false
-    t.string "repository_name", default: "", null: false
-    t.string "owner_name", default: "", null: false
+    t.string "action", null: false
+    t.bigint "repository_id"
+    t.jsonb "metadata", default: "{}"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["repository_id"], name: "index_issues_on_repository_id"
   end
 
+  create_table "repositories", force: :cascade do |t|
+    t.jsonb "metadata", default: "{}"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "issues", "repositories"
 end
