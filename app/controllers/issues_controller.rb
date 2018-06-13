@@ -34,8 +34,8 @@ class IssuesController < ApplicationController
   def issue_attributes
     params.permit(
       :action,
-      issue: [:id, :title, :state, :body],
-      repository: [:id, :name, :full_name, owner: [:id, :login] ]
+      issue: %i[id title state body],
+      repository: [:id, :name, :full_name, owner: %i[id login]]
     )
   end
 end
