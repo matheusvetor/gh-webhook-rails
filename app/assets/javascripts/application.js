@@ -12,4 +12,5 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require bulma-start/lib/main
 //= require_tree .

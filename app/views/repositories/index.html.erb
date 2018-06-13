@@ -1,0 +1,22 @@
+<div class="column is-12">
+  <div class="card">
+    <div class="card-table">
+      <div class="content">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%- @repositories.each do |repo|  %>
+              <td><%= repo.id %></td>
+              <td><%= link_to repo.name, repository_path(repo) %></td>
+            <% end -%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

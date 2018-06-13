@@ -11,7 +11,7 @@ gem 'puma'
 
 gem 'pg', '>= 0.18', '< 2.0'
 
-gem 'sass-rails', '~> 5.0'
+gem 'sassc-rails'
 
 gem 'uglifier', '>= 1.3.0'
 

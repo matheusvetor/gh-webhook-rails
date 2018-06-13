@@ -1,5 +1,12 @@
 {
   "name": "zaitt-ror-test",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bulma-start": "^0.0.2"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:matheusvetor/zaitt-ror-test.git",
+  "author": "Matheus Oliveira <matheus.vetor@gmail.com>",
+  "license": "MIT"
 }
