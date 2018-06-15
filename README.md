@@ -17,13 +17,12 @@ this url: ```https://gh-webhook-rails.herokuapp.com/api/v1/issues```
 
 The unit tests were written with Rspec.
 
-Além do Rspec, foram utilizadas outras ferramentas para medir a qualidade do código:
-- brakeman
-- fasterer
-- rubocop)
-- rubycritic
-- simplecov
-
+In addition to Rspec, other tools were used to measure the quality of the code:
+- [brakeman](https://github.com/presidentbeef/brakeman)
+- [fasterer](https://github.com/DamirSvrtan/fasterer)
+- [rubocop](https://github.com/rubocop-hq/rubocop)
+- [rubycritic](https://github.com/whitesmith/rubycritic)
+- [simplecov](https://github.com/colszowka/simplecov)
 
 To run the test suite: ```bundle exec rake```
 
@@ -36,9 +35,13 @@ This repository is configured to run the Continuous Integration scripts with eac
 ## Running the application
 
 ```git clone https://github.com/matheusvetor/gh-webhook-rails.git```
+
 ```cd gh-webhook-rails```
+
 ```rvm install ruby-2.4```
+
 ```bundle install```
+
 ```rails s```
 
 ## Api
