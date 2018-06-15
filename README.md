@@ -1,67 +1,55 @@
 # README
 
+This Project is hosted at [Heroku](https://gh-webhook-rails.herokuapp.com)
 
-Este projeto está hospedado no [Heroku](https://zaitt-ror-test.herokuapp.com)
+This application provides a API to receive GitHub issues from allowed repositories
 
-Esta aplicação provê uma api para receber issues de repositório do Github através de um webhook.
+For testing, issues must be created [on this repository](https://github.com/matheusvetor/webhook-test)
+or you can configure any GitHub repository and allow webhook with
+this url: ```https://gh-webhook-rails.herokuapp.com/api/v1/issues```
 
-Issues devem ser criadas [neste repositório](https://github.com/matheusvetor/webhook-test)
-
-## Dependências
+## Dependencies
 
 * ruby 2.4
-* postgresql (9 ou superior)
+* postgresql (9.6 ou higher)
 
-## Testes Unitários
+## Unit Tests
 
-Os testes unitários foram escritos utilizando Rspec.
+The unit tests were written with Rspec.
 
 Além do Rspec, foram utilizadas outras ferramentas para medir a qualidade do código:
-- brakeman (Escaneia a aplicação para encontrar vulnerabilidades)
-- fasterer (Sugestões de melhoria de performance)
-- rubocop (Analisa o código e sugere melhorias baseadas no Style Guide da Comunidade Ruby/Rails)
-- rubycritic (Analisa a complexidade do código)
-- simplecov (Analiza a porcentagem de cobertura de teste do código)
+- brakeman
+- fasterer
+- rubocop)
+- rubycritic
+- simplecov
 
-Execute rake para rodar toda suite de testes
-```bundle exec rake```
+
+To run the test suite: ```bundle exec rake```
 
 ## Continuous Integration
 
-Este repositório está configurado para executar os scripts de Integração Contínua a cada push.
+This repository is configured to run the Continuous Integration scripts with each push.
 
-O status da build pode ser acompanhada pelos botões a seguir:
+[![Build Status](https://travis-ci.com/matheusvetor/gh-webhook-rails.svg?branch=master)](https://travis-ci.com/matheusvetor/gh-webhook-rails)
 
-[![Build Status](https://travisci.com/matheusvetor/zaitt-ror-test.svg?token=Kycb9pKpRxqVYpJ91Xrp&branch=master)](https://travis-ci.com/matheusvetor/zaitt-ror-test)
+## Running the application
 
-## Rodando a aplicação
-
-Clone a aplicação
-```git clone git@bitbucket.org:matheusvetor/zaitt-ror-test.git```
-
-Então entre na pasta
-```cd zaitt-ror-test```
-
-O RVM irá alternar para a versão 2.4 do ruby ou informará o comando para a instalação
+```git clone https://github.com/matheusvetor/gh-webhook-rails.git```
+```cd gh-webhook-rails```
 ```rvm install ruby-2.4```
-
-Rode o bundle para instalar as dependências do projeto
 ```bundle install```
-
-Em seguida, basta executar o Servidor Web
 ```rails s```
 
 ## Api
 
-Esta aplicação é uma Api Rest e possui os seguintes recursos:
+This app provides a Rest API with the following resources:
 
 ## Repositories
 ### **GET** - /repositories/137114381/issues
 
-
-
 ```sh
-curl -X GET "https://zaitt-ror-test.herokuapp.com/api/v1/repositories/137114381/issues"
+curl -X GET "https://gh-webhook-rails.herokuapp.com/api/v1/repositories/137114381/issues"
 ```
 #### Response
 ```
@@ -82,7 +70,7 @@ curl -X GET "https://zaitt-ror-test.herokuapp.com/api/v1/repositories/137114381/
 
 #### **GET** - /api/v1/issues/:id
 ```sh
-curl -X GET "https://zaitt-ror-test.herokuapp.com/api/v1/issues/123"
+curl -X GET "https://gh-webhook-rails.herokuapp.com/api/v1/issues/123"
 ```
 #### Response
 ```
@@ -97,12 +85,10 @@ curl -X GET "https://zaitt-ror-test.herokuapp.com/api/v1/issues/123"
 }
 ```
 
-
-
 ### **POST** - /issues
 
 ```sh
-curl -X POST "https://zaitt-ror-test.herokuapp.com/api/v1/issues" \
+curl -X POST "https://gh-webhook-rails.herokuapp.com/api/v1/issues" \
     -H "X-GitHub-Event: issues" \
     -H "Content-Type: application/json" \
     --data-raw "$body"
