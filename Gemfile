@@ -36,13 +36,13 @@ group :development do
   gem 'bullet'
   gem 'guard-rspec', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'simplecov', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
+  gem 'coveralls', require: false
   gem 'database_cleaner'
   gem 'shoulda-matchers'
 end
