@@ -32,6 +32,8 @@ This repository is configured to run the Continuous Integration scripts with eac
 
 [![Build Status](https://travis-ci.com/matheusvetor/gh-webhook-rails.svg?branch=master)](https://travis-ci.com/matheusvetor/gh-webhook-rails)
 
+[![Coverage Status](https://coveralls.io/repos/github/matheusvetor/gh-webhook-rails/badge.svg?branch=master)](https://coveralls.io/github/matheusvetor/gh-webhook-rails?branch=master)
+
 ## Running the application
 
 ```git clone https://github.com/matheusvetor/gh-webhook-rails.git```
